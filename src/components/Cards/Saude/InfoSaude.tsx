@@ -1,4 +1,4 @@
-import { Card, Text, Flex, Input, Textarea, NumberInput, Select } from "@mantine/core";
+import { Card, Text, Flex, Input, Textarea, NumberInput, Select, Radio, Group } from "@mantine/core";
 import classes from './styles.module.css'
 interface InfoType {
     pergunta2: string;
@@ -20,27 +20,30 @@ const SelectInfos = {
 
 export function InformationCardio() {
     return (
-        <Card py={"lg"} withBorder shadow="sm" mt={"md"}>
+        <Card py={"lg"} withBorder radius={"lg"} mt={"md"}>
             <Card.Section py={'lg'} inheritPadding>
-                <Text size="xl" fw={500} ta={"center"}>
+                <Text size="xl" fw={500} ta={"center"} c={"blue.9"}>
                     Informações sobre sua Saúde
                 </Text>
             </Card.Section>
-            <Flex direction={"column"} gap={"md"}>
+            <Flex px={"lg"} direction={"column"} gap={"md"}>
                 {Object.keys(InfoCardio).map((key, index) => (
                     <Input.Wrapper key={index} label={InfoCardio[key]}>
                         <Input />
                     </Input.Wrapper>
                 ))}
                 {Object.keys(SelectInfos).map((key, index) => (
-                    <Select
-                        // mt="md"
-                        comboboxProps={{ withinPortal: true }}
-                        data={['Sim', 'Não']}
-                        placeholder="Escolha uma opção..."
+                    <Radio.Group
+
+                        key={key}
                         label={SelectInfos[key]}
-                        classNames={classes}
-                    />
+                        withAsterisk
+                    >
+                        <Group mt="xs">
+                            <Radio value="sim" label="Sim" />
+                            <Radio value="nao" label="Não" />
+                        </Group>
+                    </Radio.Group>
                 ))}
             </Flex>
         </Card >

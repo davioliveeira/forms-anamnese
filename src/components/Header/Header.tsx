@@ -1,8 +1,9 @@
 import { useState } from 'react';
-import { Container, Group, Burger, Text } from '@mantine/core';
+import { Container, Group, Burger, Text, Alert, Image } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import { MantineLogo } from '@mantinex/mantine-logo';
 import classes from './Header.module.css';
+import { IconInfoCircle } from '@tabler/icons-react';
 
 const links = [
     { link: '/about', label: 'Features' },
@@ -11,35 +12,19 @@ const links = [
     { link: '/community', label: 'Community' },
 ];
 
-export function FormHeader() {
-    const [opened, { toggle }] = useDisclosure(false);
-    const [active, setActive] = useState(links[0].link);
-
-    const items = links.map((link) => (
-        <a
-            key={link.label}
-            href={link.link}
-            className={classes.link}
-            data-active={active === link.link || undefined}
-            onClick={(event) => {
-                event.preventDefault();
-                setActive(link.link);
-            }}
-        >
-            {link.label}
-        </a>
-    ));
+export function FormHeader(props: any) {
 
     return (
         <header className={classes.header}>
             <Container size="md" className={classes.inner}>
-                <MantineLogo size={28} />
-                <Group gap={5} visibleFrom="xs">
-                    <Text fw={500}>Formulário de Anamnese</Text>
+                <Image src={"/logo.webp"} width={45} height={45} />
+                <Group gap={5} >
+                    <Text fw={500}>{props.title}</Text>
                 </Group>
 
-                <Burger opened={opened} onClick={toggle} hiddenFrom="xs" size="sm" />
+
             </Container>
+
         </header>
     );
 }

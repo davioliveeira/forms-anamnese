@@ -8,7 +8,7 @@
   top: rem(7px);
   left: var(--mantine-spacing-sm);
   pointer-events: none;
-  color: light-dark(var(--mantine-color-gray-5), var(--mantine-color-dark-3));
+  color: light-dark(var(--mantine-color-black), var(--mantine-color-white));
   transition:
     transform 150ms ease,
     font-size 150ms ease,
